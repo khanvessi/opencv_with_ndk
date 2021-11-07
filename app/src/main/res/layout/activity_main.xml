@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:scaleType="centerCrop"
+        />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        />
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        />
+
+    <Button
+        android:id="@+id/btn_grey"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Convert Image to Grey"
+        />
+
+<!--    <SeekBar-->
+<!--        android:id="@+id/seekBar_grey"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:max="100"-->
+<!--        />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/label_grey"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text=""-->
+<!--        />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_warmify"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Warmify"-->
+<!--        />-->
+
+    <Button
+        android:id="@+id/btn_invert"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Invert Image"
+        />
+
+    <Button
+        android:id="@+id/btn_red"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Convert to Red"
+        />
+
+    <Button
+        android:id="@+id/btn_sepia"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Sepia"
+        />
+
+
+</LinearLayout>
+
+
