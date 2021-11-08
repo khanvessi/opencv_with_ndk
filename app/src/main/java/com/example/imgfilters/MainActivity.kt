@@ -62,24 +62,28 @@ class MainActivity : AppCompatActivity() {
         original = BitmapFactory.decodeResource(resources, R.mipmap.test)
         binding.imageView!!.setImageBitmap(original)
         //binding.button.setOnClickListener { adjustBrightness() }
-        binding.button.setOnClickListener {
+        binding.btnReset.setOnClickListener {
             binding.imageView.setImageBitmap(original)
             binding.seekBar.progress = 0
             brightness = 0.0f
             adjustBrightness()
+            binding.txtFilterApplied.text = "No Filter"
         }
 
-        binding.btnGrey.setOnClickListener(View.OnClickListener {
+        binding.imgGrey.setOnClickListener(View.OnClickListener {
             convertImageToGray()
+            binding.txtFilterApplied.text = "GREY"
         })
 
-        binding.btnInvert.setOnClickListener(View.OnClickListener {
+        binding.imgInvert.setOnClickListener(View.OnClickListener {
             invertImage()
+            binding.txtFilterApplied.text = "INVERT"
         })
 
-        binding.btnSepia.setOnClickListener(View.OnClickListener {
+        binding.imgSepia.setOnClickListener(View.OnClickListener {
             //invertImage()
             convertImageToSepia()
+            binding.txtFilterApplied.text = "SEPIA"
         })
 
 //        binding.btnWarmify.setOnClickListener(View.OnClickListener {
@@ -87,9 +91,9 @@ class MainActivity : AppCompatActivity() {
 //            warmifyImage()
 //        })
 
-        binding.btnRed.setOnClickListener(View.OnClickListener {
-            convertImageToRed()
-        })
+//        binding.btnRed.setOnClickListener(View.OnClickListener {
+//            convertImageToRed()
+//        })
 
 
 //        if(OpenCVLoader.initDebug()){
@@ -113,10 +117,6 @@ class MainActivity : AppCompatActivity() {
         options.inPreferredConfig = Bitmap.Config.ARGB_8888
         mBmp = BitmapFactory.decodeResource(this.resources, R.mipmap.test, options)
 
-        if (mBmp != null) {
-            binding.imageView.setImageBitmap(mBmp)
-        }
-
         val mBMP = mBmp
         if (mBMP != null) {
             width = mBMP.width
@@ -124,6 +124,17 @@ class MainActivity : AppCompatActivity() {
         if (mBMP != null) {
             height = mBMP.height
         }
+
+        convertImageToGray()
+        convertImageToSepia()
+        invertImage()
+        if (mBmp != null) {
+            binding.imageView.setImageBitmap(mBmp)
+        }
+
+        binding.label.text = "Brightness = "+ 0.0f
+
+
 
         //FOR BRIGHTNESS====================
 
@@ -157,6 +168,7 @@ class MainActivity : AppCompatActivity() {
             //mRelLayout.setBackgroundColor(resources.getColor(android.R.color.white))
             convertToGray(mBmp, bitmapWip)
             binding.imageView.setImageBitmap(bitmapWip)
+            binding.imgGrey.setImageBitmap(bitmapWip)
         } catch (e: MyException) {
             val handler = Handler()
             handler.post {
@@ -171,6 +183,7 @@ class MainActivity : AppCompatActivity() {
         bitmapWip = mBmp!!.copy(Bitmap.Config.ARGB_8888, true)
         invertImage(bitmapWip)
         binding.imageView.setImageBitmap(bitmapWip)
+        binding.imgInvert.setImageBitmap(bitmapWip)
     }
 
     private fun convertImageToSepia() {
@@ -182,6 +195,7 @@ class MainActivity : AppCompatActivity() {
             )
             convertToSepia(mBmp, bitmapWipOther)
             binding.imageView.setImageBitmap(bitmapWipOther)
+            binding.imgSepia.setImageBitmap(bitmapWipOther)
         } catch (e: MyException) {
             val handler = Handler()
             handler.post {
