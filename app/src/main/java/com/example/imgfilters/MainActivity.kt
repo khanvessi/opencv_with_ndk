@@ -13,6 +13,9 @@ import android.view.View
 import android.widget.*
 import android.widget.SeekBar.OnSeekBarChangeListener
 import com.example.imgfilters.databinding.ActivityMainBinding
+import org.opencv.android.Utils
+import org.opencv.core.CvType
+import org.opencv.core.Mat
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,6 +48,10 @@ class MainActivity : AppCompatActivity() {
     external fun invertImage(bitmapIn: Bitmap?)
     external fun warmifyImage(bitmapIn: Bitmap?, bitmapOut: Bitmap?)
     external fun convertToRed(bitmapIn: Bitmap?, bitmapOut: Bitmap?)
+
+    //using opencv
+    external fun ImgToGray(addrRgba: Long, addrGray: Long): String
+
 
 
     @Throws(MyException::class)
@@ -149,7 +156,30 @@ class MainActivity : AppCompatActivity() {
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
             override fun onStopTrackingTouch(seekBar: SeekBar) {}
         })
+
+
+
+        //OPENCV
+        val bmp = BitmapFactory.decodeResource(resources, R.mipmap.test)
+
+
+        val convertedBmp = convertBmp2Gray(bmp, 619, 619,true)
+        Log.e(ContentValues.TAG, "onCreate: $convertedBmp", )
     }
+
+
+    fun convertBmp2Gray(bitmap: Bitmap, width: Int, height: Int, rotation: Boolean): Bitmap {
+        val mat = Mat(
+            bitmap.width, bitmap.height,
+            CvType.CV_8UC1
+        )
+        Utils.bitmapToMat(bitmap, mat)
+        val outMat = Mat(height, width, CvType.CV_8SC1)
+        ImgToGray(mat.nativeObjAddr, outMat.nativeObjAddr)
+        Utils.matToBitmap(outMat, bitmap)
+        return bitmap
+    }
+
 
 
 

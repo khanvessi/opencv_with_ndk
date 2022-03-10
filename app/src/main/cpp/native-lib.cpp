@@ -7,6 +7,16 @@
 #include <stdlib.h>
 #include <math.h>
 
+using namespace std;
+
+#include "opencv2/core/core.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/core/utility.hpp"
+#include "opencv2/highgui/highgui.hpp"
+
+using namespace cv;
+
+
 
 
 #define  LOG_TAG    "libimageprocessing"
@@ -436,4 +446,14 @@ Java_com_example_imgfilters_MainActivity_convertToRed(JNIEnv *env, jobject thiz,
 //    }COFFEE_CATCH() {
 //        LOG_E("error : %s", coffeecatch_get_message());
 //    }COFFEE_END();
+}
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_example_imgfilters_MainActivity_ImgToGray(JNIEnv *env, jobject thiz, jlong addr_rgba,
+                                                   jlong addr_gray) {
+    Mat& src = *(Mat*)addr_rgba;
+    Mat&  gray = *(Mat*)addr_gray;
+
+    cvtColor(src, gray, COLOR_BGR2GRAY);
+
 }

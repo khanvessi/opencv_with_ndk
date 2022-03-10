@@ -5,9 +5,43 @@
 
 cmake_minimum_required(VERSION 3.10.2)
 
+include_directories(C:/Users/awais.hussain/Downloads/OpenCV-android-sdk/sdk/native/jni/include)
+
+
 # Declares and names the project.
 
 project("imgfilters")
+
+
+
+# OpenCV stuff
+add_library( lib_opencv SHARED IMPORTED )
+#set_target_properties(lib_opencv PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/libopencv_java3.so)
+set_target_properties(lib_opencv PROPERTIES IMPORTED_LOCATION C:/Users/awais.hussain/AndroidStudioProjects/OpenCVinC/app/src/main/jniLibs/armeabi-v7a/libopencv_java3.so)
+
+add_library(lib_opencv_core STATIC IMPORTED)
+set_target_properties(lib_opencv_core PROPERTIES IMPORTED_LOCATION
+        C:/Users/awais.hussain/AndroidStudioProjects/OpenCVinC/app/src/main/jniLibs/armeabi-v7a/libopencv_core.a)
+
+
+add_library(lib_opencv_imgproc STATIC IMPORTED)
+set_target_properties(lib_opencv_imgproc PROPERTIES IMPORTED_LOCATION
+        C:/Users/awais.hussain/AndroidStudioProjects/OpenCVinC/app/src/main/jniLibs/armeabi-v7a/libopencv_imgproc.a)
+
+
+
+add_library(lib_opencv_imgcodecs STATIC IMPORTED)
+set_target_properties(lib_opencv_imgcodecs PROPERTIES IMPORTED_LOCATION
+        C:/Users/awais.hussain/AndroidStudioProjects/OpenCVinC/app/src/main/jniLibs/armeabi-v7a/libopencv_imgcodecs.a)
+
+add_library(lib_opencv_objdetect STATIC IMPORTED)
+set_target_properties(lib_opencv_objdetect PROPERTIES IMPORTED_LOCATION
+        C:/Users/awais.hussain/AndroidStudioProjects/OpenCVinC/app/src/main/jniLibs/armeabi-v7a/libopencv_objdetect.a)
+
+add_library(lib_opencv_tracking STATIC IMPORTED)
+set_target_properties(lib_opencv_tracking PROPERTIES IMPORTED_LOCATION
+        C:/Users/awais.hussain/AndroidStudioProjects/OpenCVinC/app/src/main/jniLibs/armeabi-v7a/libopencv_tracking.a)
+
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -46,5 +80,12 @@ target_link_libraries( # Specifies the target library.
         imgfilters
         # Links the target library to the log library
         # included in the NDK.
+
+        # OpenCV lib
+        lib_opencv
+        lib_opencv_core
+        lib_opencv_imgproc
+        lib_opencv_imgcodecs
+
         ${jnigraphics-lib}
         ${log-lib})

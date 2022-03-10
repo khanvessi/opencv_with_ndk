@@ -124,7 +124,7 @@
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginRight="20dp"
-                android:background="@mipmap/sepia"
+                android:background="@mipmap/test"
                 android:text="Sepia"
                 tools:layout_editor_absoluteX="-63dp"
                 tools:layout_editor_absoluteY="615dp" />
@@ -134,7 +134,7 @@
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginRight="20dp"
-                android:background="@mipmap/grey"
+                android:background="@mipmap/test"
                 tools:layout_editor_absoluteX="105dp"
                 tools:layout_editor_absoluteY="624dp" />
 
@@ -143,7 +143,7 @@
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginRight="20dp"
-                android:background="@mipmap/invert"
+                android:background="@mipmap/test"
                 tools:layout_editor_absoluteX="274dp"
                 tools:layout_editor_absoluteY="624dp" />
 

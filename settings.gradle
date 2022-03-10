@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ImgFilters"
 include ':app'
+include ':sdk'
